@@ -12,6 +12,35 @@
 //   c.next = b;
 //   circular(l) // true
 
-function circular(list) {}
+// function circular(list) {
+//     const dict = []
+//     let node = list.head;
+
+//     while(node) {
+//         if (dict.includes(node)) {
+//             return true
+//         }
+
+//         dict.push(node)
+//         node = node.next
+//     }
+
+//     return false
+// }
+
+function circular(list) {
+    let fast = list.getFirst()
+    let slow = list.getFirst()
+
+    while(fast.next?.next) {
+        fast = fast.next.next
+        slow = slow.next
+        if (slow == fast) {
+            return true
+        }
+    }
+
+    return false
+}
 
 module.exports = circular;
