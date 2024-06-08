@@ -17,6 +17,26 @@
 //       '### '
 //       '####'
 
-function steps(n) {}
+function steps(n) {
+  const stepRecursive = (n, row = 0, string = "") => {
+    if (n === row) return;
+
+    if (n === string.length) {
+      console.log(string);
+      return stepRecursive(n, row + 1);
+    }
+
+    const add = string.length <= row ? "#" : " ";
+    stepRecursive(n, row, string + add);
+  };
+
+  stepRecursive(n);
+}
+
+// function steps(n) {
+//     for (let i = 1; i <= n; i++) {
+//         console.log('#'.repeat(i) + ' '.repeat(n-i))
+//     }
+// }
 
 module.exports = steps;
